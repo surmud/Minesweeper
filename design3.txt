@@ -1,0 +1,135 @@
+# File: design1.txt
+# Author: Surmud Jamil
+# Date: May something
+# Section: 9
+# E-mail: sjamil2@umbc.edu
+# Description: Design of project 3, minesweeper
+
+
+#Constants
+FLAG = "F"
+MINE = "X"
+BORDER = "#"
+
+#Functions being used:
+#reveal() reveals the islands of empty space if the user clicks on an empty spot
+#input - the board and the location of the piece
+#output - the updated board
+
+#checkValidMove() makes sure that the move the user enters is a valid move
+#input - the location of the board and the move
+#output - True or false, whether or not it's valid
+
+#numberBoard() places numbers on the spots of the board where they belong
+#input - the initial board
+#output - the updated board with the numbers
+
+#placeFlag() places a flag on the spot where the user wants it
+#			if a flag is already there, remove it
+#input - the board and the location of where they want it to be placed
+#output - the updated board once the flag is placed
+
+#checkValidFlag() checks if a flag is in the place where it needs to be, 
+#if there's one that isn't, return the coordinates of it
+#input - the location of the flag most recently placed
+#output - the location of the flag if it is invalid
+
+#minesLeft() returns the number of how many mines are left that need to be found
+#input - the board
+#output - the number of mines left
+
+#checkWin() checks for a win by seeing if the flags are in the correct spots on the board
+#input - the board and the location of where the flags belong
+#output - True or false, whether or not they won
+
+
+# prettyPrintBoard() prints the board with row and column labels,
+#                    and spaces the board out so that it looks square
+# Input:             board;   the rectangular 2d gameboard to print
+# Output:            None;    prints the board in a pretty way
+def prettyPrintBoard(board):
+
+    print() # empty line
+
+    # if enough columns, print a "tens column" line above
+    if len(board[0])-2 >= 10:
+        print("{:25s}".format(""), end="")  # empty space for 1 - 9
+        for i in range(10, len(board[0])-1 ):
+            print( str(i // 10), end =" ")
+        print()
+
+    # create and print top numbered line
+    print("       ", end="")
+    # only go from 1 to len - 1, so we don't number the borders
+    for i in range(1, len(board[0])-1 ):
+        # only print the last digit (so 15 --> 5)
+        print(str(i % 10), end = " ")
+    print()
+
+    # create the border row
+    borderRow = "     "
+    for col in range(len(board[0])):
+        borderRow += board[0][col] + " "
+
+    # print the top border row
+    print(borderRow)
+                         
+    # print all the interior rows
+    for row in range(1, len(board) - 1):
+        # print the row label
+        print("{:3d}  ".format(row), end="")
+
+        # print the row contents
+        for col in range(len(board[row])):
+            if str(board[row][col]) == FLAG:
+                # this will print the flag in black and red
+                print("\033[1;30;41m" + "F" + "\033[0m", end =" ")
+            else:
+                print(str(board[row][col]), end = " ")
+        print()
+
+    # print the bottom border row and an empty line
+    print(borderRow, "\n")
+
+def main():
+
+	Pseudocode for main:
+
+	#read in the board
+	#store the board
+	#fill the board with the clues/numbers
+	#print the board
+
+	#while the game isn't over:
+	#ask the user what they want to do
+		#- if they want to reveal a piece, reveal it
+		#if they want to flag, flag it
+		#if they hit an empty space, reveal the open parts
+
+	#print out the board once it updates
+	#check if they won or lost
+		#if they won or lost, end the game
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
